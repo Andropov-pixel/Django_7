@@ -1,0 +1,21 @@
+{% extends 'catalog/home.html'%}
+{% block content %}
+
+
+<div class="album py-5 bg-body-tertiary">
+    <div class="container">
+        <h2>Войти</h2>
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+        <div class="col">
+          <div class="card shadow-sm">
+            <form class="row" method="post">
+              {% csrf_token %}
+              {{ form.as_p }}
+              <button type="submit">Войти</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+{% endblock %}
