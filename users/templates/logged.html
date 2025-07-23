@@ -1,0 +1,10 @@
+{% extends 'catalog/home.html'%}
+{% load my_tags %}
+{% include 'catalog/includes/inc_menu.html'%}
+
+{% block content %}
+  <h2>Вы вышли из системы</h2>
+  <p>Спасибо, что воспользовались нашим сайтом. Вы успешно вышли из системы.</p>
+  <a href="{% url 'login' %}">Войти снова</a>
+{% endblock %}
+{% include 'catalog/includes/footer.html'%}
