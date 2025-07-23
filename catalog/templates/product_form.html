@@ -1,0 +1,18 @@
+{% extends 'catalog/home.html'%}
+{% load my_tags %}
+{% include 'catalog/includes/inc_menu.html'%}
+{% block content %}
+<div class="album py-5 bg-body-tertiary">
+    <div class="container mt-5">
+        <h1 class="mb-4">Форма MyModel</h1>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.non_field_errors }}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-primary">Сохранить</button>
+                <a class="btn btn-primary" href="{% url 'catalog:home' %}">Назад</a>
+        </form>
+    </div>
+    <script src="/static/js/bootstrap.bundle.min.js"></script>
+{% endblock %}
+{% include 'catalog/includes/footer.html'%}
