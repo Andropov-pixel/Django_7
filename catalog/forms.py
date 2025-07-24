@@ -9,7 +9,7 @@ forbidden = ['казино', 'криптовалюта', 'крипта', 'бир
 class ProductForm(forms.ModelForm):
     class Meta:
         model = Product
-        fields = ['name', 'description', 'image', 'category', 'price', 'created_at']
+        fields = ['name', 'description', 'image', 'category', 'price', 'created_at', 'is_available']
 
     def __init__(self, *args, **kwargs):
         super(ProductForm, self).__init__(*args, **kwargs)
@@ -49,6 +49,18 @@ class ProductForm(forms.ModelForm):
             if not (image.name.endswith('.jpg') or image.name.endswith('.jpeg') or image.name.endswith('.png')):
                 raise ValidationError("Файл не допустимого формата")
         return image
+
+
+class ProductModeratorForm(forms.ModelForm):
+    class Meta:
+        model = Product
+        fields = ["is_available"]
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for field in self.fields.values():
+            field.widget.attrs["class"] = "form-control"
+        self.fields["is_available"].widget.attrs.update({"class": "form-check"})
 
 
 class CategoryForm(forms.ModelForm):

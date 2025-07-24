@@ -1,0 +1,28 @@
+{% extends 'catalog/home.html' %}
+
+{% block title %}Категорий{% endblock %}
+
+{% block content %}
+<div class="album py-5 bg-body-tertiary">
+    <div class="container">
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+        {% for category in object_list %}
+        <div class="col">
+          <div class="card shadow-sm">
+            <div class="card-body">
+              <p class="card-text"> {{ category.name }}</p>
+              <p class="card-text">{{ category.description| truncatechars:100 }}</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <a class="btn btn-primary" href="{% url 'catalog:category_products' category.id %}">Подробнее</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+{% endblock %}
+{% include 'catalog/includes/footer.html'%}
