@@ -16,9 +16,14 @@
                 <div class="btn-group">
                   <a class="btn btn-primary" href="{% url 'catalog:home' %}">Назад</a>
                 </div>
-                <div class="btn-group ">
+                    {% if perms.catalog.can_unpublish_product %}
+                    <div class="btn-group ">
+                      <a class="btn btn-primary" href="{% url 'catalog:product_update' product.pk %}">Редактировать</a>
+                    </div>
+                    <div class="btn-group ">
                       <a class="btn btn-primary" href="{% url 'catalog:product_delete' product.pk %}">Удалить</a>
                     </div>
+                  {% endif %}
                 <small class="text-body-secondary">9 mins</small>
               </div>
             </div>

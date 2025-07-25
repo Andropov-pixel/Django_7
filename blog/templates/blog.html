@@ -1,0 +1,15 @@
+{% extends 'blog/base.html'%}
+{% load my_tags %}
+{% block content %}
+<div class="card mb-3">
+  <img src="{{ blog.image| media_filter }}" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">{{ blog.title }}</h5>
+    <p class="card-text"> {{ blog.content }}</p>
+    <p class="card-text"><small class="text-muted"> Количество просмотров: {{blog.count_of_views}}</small></p>
+    <p class="card-text"><small class="text-muted">{{blog.created_at}}</small></p>
+      <a href="{% url 'blog:blog_update' blog.id %}" class="btn btn-primary">редактировать</a>
+      <a href="{% url 'blog:blog_delete' blog.id %}" class="btn btn-danger">удалить</a>
+  </div>
+</div>
+{% endblock %}
