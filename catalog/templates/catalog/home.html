@@ -23,6 +23,7 @@
         <ul class="navbar-nav ml-auto">
             <h4>
             {% if user.is_authenticated %}
+                <li><a href="{% url 'users:logout' %}" class="text-white">Выход</a></li>
                 <li class="nav-item">
                     <form method="post" action="{% url 'users:logout' %}" style="display: inline;">
                         {% csrf_token %}
@@ -31,6 +32,8 @@
                     </form>
                 </li>
             {% else %}
+                <li><a href="{% url 'users:register' %}" class="text-white">регистрация</a></li>
+                <li><a href="{% url 'users:login' %}" class="text-white">Вход</a></li>
                 <li class="nav-item">
                     <a class="btn btn-link nav-link me-md-5" href="{% url 'users:login' %}">Войти</a>
                 </li>
