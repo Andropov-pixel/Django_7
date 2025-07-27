@@ -8,7 +8,7 @@
 
 </head>
 <body>
-{% include 'catalog/includes/inc_menu.html'%}
+{% include 'includes/inc_menu.html'%}
 
 <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
     <h1 class="display-4">Skystore</h1>
@@ -19,6 +19,9 @@
     {% else %}
         <p>Добро пожаловать на сайт аноним!</p>
     {% endif %}</h2>
+</div>
+{% block content %}
+{% endblock %}
     <div class="d-grid gap-2 d-md-flex justify-content-md-end">
         <ul class="navbar-nav ml-auto">
             <h4>
@@ -48,7 +51,7 @@
 </div>
 {% block content %}
 {% endblock %}
-{% include 'catalog/includes/footer.html'%}
+{% include 'includes/footer.html'%}
 
 </div>
 <script type="text/javascript" src="/static/js/bootstrap.bundle.min.js"></script>
