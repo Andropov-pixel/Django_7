@@ -9,18 +9,24 @@
         <div class="col-sm-4 offset-md-1 py-4">
           <h4>Меню</h4>
           <ul class="list-unstyled">
-            <li><a href="{% url 'catalog:home' %}" class="text-white">Главная</a></li>
-            <li><a href="{% url 'blog:home' %}" class="text-white">Блог</a></li>
-            <li><a href="{% url 'catalog:contacts' %}" class="text-white">Контакты</a></li>
-            <li><a href="#" class="text-white">Email me</a></li>
-              </li>
+  <li><a href="{% url 'catalog:home' %}" class="text-white">Главная</a></li>
+  <li><a href="{% url 'blog:home' %}" class="text-white">Блог</a></li>
+  <li><a href="{% url 'catalog:contacts' %}" class="text-white">Контакты</a></li>
+  <li><a href="#" class="text-white">Email me</a></li>
   {% if user.is_authenticated %}
-    <li><a href="{% url 'users:logout' %}" class="text-white">Выход</a></li>
+  <li>
+    <form method="post" action="{% url 'users:logout' %}">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-link nav-link" style="text-decoration: underline">Выйти</button>
+    </form>
+  </li>
   {% else %}
-    <li>
-      <a href="{% url 'users:register' %}" class="text-white">Регистрация</a
-    </li>
-  <li><a href="{% url 'users:login' %}" class="text-white">Вход</a></li>
+  <li>
+  <a href="{% url 'users:register' %}" class="text-white">Регистрация</a>
+  </li>
+  <li>
+  <a href="{% url 'users:login' %}" class="text-white">Вход</a>
+  </li>
   {% endif %}
 </ul>
         </div>
